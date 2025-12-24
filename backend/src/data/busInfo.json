@@ -1,0 +1,33 @@
+[
+    {
+        "id": 101,
+        "source" : "Pune",
+        "destination": "Indore",
+        "seatsAvailable": 50,
+        "fare": 1600
+    },
+
+    {
+        "id": 102,
+        "source" : "Indore",
+        "destination": "Dewas",
+        "seatsAvailable": 0,
+        "fare": 40
+    },
+
+    {
+        "id": 103,
+        "source" : "Pune",
+        "destination": "Mumbai",
+        "seatsAvailable": 20,
+        "fare": 350
+    },
+
+    {
+        "id": 104,
+        "source" : "Mumbai",
+        "destination": "Indore",
+        "seatsAvailable": 40,
+        "fare": 1200
+    }
+]
