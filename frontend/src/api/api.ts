@@ -1,4 +1,5 @@
 import axios from "axios";
+import type { Bus } from "../types/types";
 
 const API_URL = "http://localhost:5000/details";
 
@@ -14,28 +15,26 @@ export const getBuses = async() => {
     }
 }
 
-export const bookBusSeat = async(id: number) => {
+export const bookBusSeat = async (id: number) => {
+  const res = await axios.post(`${API_URL}/book/${id}`);
 
-    try {
-        const res = await axios.post(`${API_URL}/book/${id}`);
-        return res.data;
+  if (res.status !== 200) {
+    throw new Error("Booking failed");
+  }
 
-    } catch (error) {
-        console.error("Error booking buses:", error);
-        throw error;
-    }
+  return res.data;
+};
 
-}
 
-export const searchBus = async(source: string, destination:string) => {
+export const searchBus = async (
+  source: string,
+  destination: string
+): Promise<Bus[]> => {
+  const res = await axios.get(
+    `${API_URL}/bus/search?source=${encodeURIComponent(
+      source
+    )}&destination=${encodeURIComponent(destination)}`
+  );
 
-    try {
-         const res = await axios.get(`${API_URL}/bus/search?source=${source}&destination=${destination}`);
-         return res.data;
-
-    } catch (error) {
-        console.error("Error searching buses:", error);
-        throw error;
-    }
-
-}
+  return res.data.data; 
+};

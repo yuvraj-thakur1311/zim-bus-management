@@ -5,7 +5,7 @@ import { busModel } from "../models/bus";
 let busDetails: busModel[] = busInfo;
 
 export const getBuses = (req: Request, res: Response) => {
-    return res.status(201).json(busDetails);
+    return res.status(200).json(busDetails);
 }
 
 export const bookBus = (req: Request, res: Response) => {
@@ -51,6 +51,13 @@ export const searchBus = (req: Request, res: Response) => {
         bus.source.toLowerCase() === String(source).toLowerCase() 
         && bus.destination.toLowerCase() === String(destination).toLowerCase()
     ))
+
+     if (filterBus.length === 0) {
+        return res.status(404).json({
+        success: false,
+        message: "No buses found for the given route"
+        });
+    }
 
     return res.status(200).json({
         message: "Bus fetched successfullyy..",

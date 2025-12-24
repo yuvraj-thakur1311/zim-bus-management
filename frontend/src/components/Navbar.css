@@ -1,30 +1,43 @@
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
-  background-color: #1e293b; /* dark blue */
+  padding: 40px 30px;
+  background-color: #1e293b;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
-  color: white;
-  font-size: 22px;
-  font-weight: bold;
+  color: #38bdf8;
+  font-size: 50px;
+  font-weight:bolder;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 25px;
 }
 
 .nav-links li a {
   color: white;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 23px;
+  position: relative;
 }
 
-.nav-links li a:hover {
-  text-decoration: underline;
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #38bdf8;
+  left: 0;
+  bottom: -5px;
+  transition: width 0.3s;
 }
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
